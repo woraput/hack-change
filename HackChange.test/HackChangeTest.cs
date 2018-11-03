@@ -18,5 +18,21 @@ namespace HackChange.test
             Assert.Equal(expectedBankCards, result.BankCards);
             Assert.Equal(expectedStatusCode, result.StatusCode);
         }
+
+        [Theory]
+        [InlineData(1, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 }, -1000, 1000)]
+        [InlineData(1, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 }, null, 1000)]
+        [InlineData(1, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 }, 1000, -1000)]
+        [InlineData(1, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 }, 1000, null)]
+        [InlineData(1, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 }, -1000, -1000)]
+        [InlineData(1, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 }, null, null)]
+        public void InputWrongAmountAndPayReturnStatusCode1(int expectedStatusCode, int expectedChange, int[] expectedBankCards, int amount, int pay)
+        {
+            var hackChangeMoney = new HackChangeMoney();
+            var result = hackChangeMoney.CalculateChange(amount, pay);
+            Assert.Equal(expectedChange, result.Change);
+            Assert.Equal(expectedBankCards, result.BankCards);
+            Assert.Equal(expectedStatusCode, result.StatusCode);
+        }
     }
 }

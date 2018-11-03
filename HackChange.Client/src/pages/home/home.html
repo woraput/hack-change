@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      App kakak
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>
+    Hack Change App
+  </h1>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" type="number" stacked>ราคาสินค้าทั้งหมด</ion-label>
+      <ion-input [(ngModel)]="amount"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" type="number" stacked>จำนวนเงินที่จ่าย</ion-label>
+      <ion-input [(ngModel)]="pay"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button block (click)=Buy()>ตกลง</button>
+  <div *ngIf="status != 3">
+    <p>OUTPUT</p>
+    <p>======</p>
+    <p *ngIf="status == 1">ใส่ข้อมูลไม่ถูกต้อง</p>
+    <p *ngIf="status == 2">จำนวนเงินที่จ่ายไม่พอ</p>
+    <p *ngIf="status == 0">Change: {{change}}</p>
+    <div *ngFor="let item of banks; index as i">
+      <p *ngIf="item != 0">{{banksList[i]}} X {{item}}</p>
+    </div>
+  </div>
+</ion-content>

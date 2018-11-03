@@ -20,7 +20,7 @@ namespace HackChange.test
             var hackChangeMoney = new HackChangeMoney();
             var result = hackChangeMoney.CalculateChange(352, 1000);
             Assert.Equal(648, result.Change);
-            Assert.Equal(new int[7] { 0, 0, 3, 1, 0, 0, 0 }, result.BankCards);
+            Assert.Equal(new int[7] { 0, 1, 1, 0, 2, 1, 3 }, result.BankCards);
         }
     }
 }

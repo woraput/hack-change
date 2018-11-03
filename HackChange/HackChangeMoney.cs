@@ -6,21 +6,13 @@ namespace HackChange
     {
         public ChangeModel CalculateChange(int amount, int pay)
         {
-            if (amount < 0 || pay < 0)
+            var isWronginput = amount < 0 || pay < 0;
+            var isNotEnough = pay < amount;
+            if (isWronginput || isNotEnough)
             {
                 return new ChangeModel
                 {
-                    StatusCode = 1,
-                    Change = 0,
-                    BankCards = new int[] { }
-                };
-
-            }
-            else if (pay < amount)
-            {
-                return new ChangeModel
-                {
-                    StatusCode = 2,
+                    StatusCode = isWronginput? 1 : 2,
                     Change = 0,
                     BankCards = new int[] { }
                 };

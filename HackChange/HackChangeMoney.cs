@@ -17,12 +17,11 @@ namespace HackChange
                 changebank = changebank % banklist[i];
             };
 
-            var result = new ChangeModel
+            return new ChangeModel
             {
                 Change = change,
                 BankCards = banks
             };
-            return result;
         }
     }
 }

@@ -9,7 +9,6 @@ namespace HackChange.test
         [InlineData(0, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 }, 1000, 1000)]
         [InlineData(0, 648, new int[] { 0, 1, 1, 0, 2, 1, 3 }, 352, 1000)]
         [InlineData(0, 350, new int[] { 0, 0, 3, 1, 0, 0, 0 }, 650, 1000)]
-
         public void InputAmountAndPayReturnChangeAndBank(int expectedStatusCode, int expectedChange, int[] expectedBankCards, int amount, int pay)
         {
             var hackChangeMoney = new HackChangeMoney();
@@ -23,7 +22,6 @@ namespace HackChange.test
         [InlineData(1, 0, new int[] { }, -1000, 1000)]
         [InlineData(1, 0, new int[] { }, 1000, -1000)]
         [InlineData(1, 0, new int[] { }, -1000, -1000)]
-
         public void InputWrongAmountAndPayReturnStatusCode1(int expectedStatusCode, int expectedChange, int[] expectedBankCards, int amount, int pay)
         {
             var hackChangeMoney = new HackChangeMoney();
@@ -37,7 +35,6 @@ namespace HackChange.test
         [InlineData(2, 0, new int[] { }, 1000, 500)]
         [InlineData(2, 0, new int[] { }, 1000, 600)]
         [InlineData(2, 0, new int[] { }, 1000, 100)]
-
         public void InputNotEnoughToPayReturnStatusCode2(int expectedStatusCode, int expectedChange, int[] expectedBankCards, int amount, int pay)
         {
             var hackChangeMoney = new HackChangeMoney();

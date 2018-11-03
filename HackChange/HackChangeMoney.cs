@@ -16,7 +16,6 @@ namespace HackChange
                     Change = 0,
                     BankCards = new int[] { }
                 };
-
             }
 
             var banklist = new int[] { 1000, 500, 100, 50, 20, 5, 1 };

@@ -12,7 +12,17 @@ namespace HackChange
                 {
                     StatusCode = 1,
                     Change = 0,
-                    BankCards = new int[7]
+                    BankCards = new int[] { }
+                };
+
+            }
+            else if (pay < amount)
+            {
+                return new ChangeModel
+                {
+                    StatusCode = 2,
+                    Change = 0,
+                    BankCards = new int[] { }
                 };
 
             }

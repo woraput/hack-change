@@ -20,11 +20,25 @@ namespace HackChange.test
         }
 
         [Theory]
-        [InlineData(1, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 }, -1000, 1000)]
-        [InlineData(1, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 }, 1000, -1000)]
-        [InlineData(1, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 }, -1000, -1000)]
+        [InlineData(1, 0, new int[] { }, -1000, 1000)]
+        [InlineData(1, 0, new int[] { }, 1000, -1000)]
+        [InlineData(1, 0, new int[] { }, -1000, -1000)]
 
         public void InputWrongAmountAndPayReturnStatusCode1(int expectedStatusCode, int expectedChange, int[] expectedBankCards, int amount, int pay)
+        {
+            var hackChangeMoney = new HackChangeMoney();
+            var result = hackChangeMoney.CalculateChange(amount, pay);
+            Assert.Equal(expectedChange, result.Change);
+            Assert.Equal(expectedBankCards, result.BankCards);
+            Assert.Equal(expectedStatusCode, result.StatusCode);
+        }
+
+        [Theory]
+        [InlineData(2, 0, new int[] { }, 1000, 500)]
+        [InlineData(2, 0, new int[] { }, 1000, 600)]
+        [InlineData(2, 0, new int[] { }, 1000, 100)]
+
+        public void InputNotEnoughToPayReturnStatusCode2(int expectedStatusCode, int expectedChange, int[] expectedBankCards, int amount, int pay)
         {
             var hackChangeMoney = new HackChangeMoney();
             var result = hackChangeMoney.CalculateChange(amount, pay);

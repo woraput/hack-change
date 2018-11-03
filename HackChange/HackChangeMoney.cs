@@ -6,23 +6,17 @@ namespace HackChange
     {
         public ChangeModel CalculateChange(int amount, int pay)
         {
+            var banklist = new int[] { 1000, 500, 100, 50, 20, 5, 1 };
             var change = pay - amount;
             var changebank = change;
             var banks = new int[7];
-            banks[0] = changebank / 1000;
-            changebank = changebank % 1000;
-            banks[1] = changebank / 500;
-            changebank = changebank % 500;
-            banks[2] = changebank / 100;
-            changebank = changebank % 100;
-            banks[3] = changebank / 50;
-            changebank = changebank % 50;
-            banks[4] = changebank / 20;
-            changebank = changebank % 20;
-            banks[5] = changebank / 5;
-            changebank = changebank % 5;
-            banks[6] = changebank / 1;
-            changebank = changebank % 1;
+
+            for (int i = 0; i < banklist.Length ; i++)
+            {
+                banks[i] = changebank / banklist[i];
+                changebank = changebank % banklist[i];
+            };
+
             var result = new ChangeModel
             {
                 Change = change,
